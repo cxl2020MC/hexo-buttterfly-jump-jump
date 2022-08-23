@@ -16,9 +16,9 @@ def index():
     url = os.getenv('URL')
     print(url)
     if url == None:
-        # return 'URL环境变量未设置'
-        url = 'https://github.com/cxl2020MC/cxl2020MC.github.io/raw/master/source/_data/link.yml'
+        return 'URL环境变量未设置'
     yamldata = requests.get(url).text
+    print(yamldata)
     data = yaml.load(yamldata)
     print(data)
 
