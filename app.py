@@ -1,8 +1,8 @@
-from email.errors import FirstHeaderLineIsContinuationDefect
 from flask import Flask, request, jsonify, render_template
 import random
 import yaml
 import requests
+import os
 # import traceback
 
 app = Flask(__name__)
@@ -13,16 +13,18 @@ app.debug = True
 
 @app.route('/', methods=['GET'])
 def index():
-    data = requests.get('https://github.com/cxl2020MC/cxl2020MC.github.io/raw/master/source/_data/link.yml').text
-    jsondata = yaml.load(data)
-    print(jsondata)
+    url = os.getenv('URL')
+    yamldata = requests.get(url).text
+    data = yaml.load(yamldata)
+    print(data)
 
-    friend = []
-    for i in jsondata:
-        for a in i['link_list']:
-            friend.append(a['link'])
-    url = friend[random.randint(len(friend)-1)]
-    return render_template('tp.html', url = url)
+    friends = []
+    for i in data:
+        for i in i['link_list']:
+            friends.append({'url': i['link'], 'name': i['name']})
+    print(friends)
+    data = friends[random.randint(len(friends)-1)]
+    return render_template('tp.html', url = data['url'], name = data['name'])
 
 if __name__ == '__main__':
     app.run()

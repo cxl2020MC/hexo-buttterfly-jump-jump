@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="cn">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>正在跳转中</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>驭风飞行中......</title>
   <style>
     * {
       margin: 0;
@@ -30,35 +32,31 @@
       margin: 24px;
       color: #333;
     }
+    .footer {
+      padding: 16px;
+      border-top: 1px solid #efefef;
+      color: #777;
+      font-weight: lighter;
+    }
+    .footer a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #000;
+    }
   </style>
 </head>
 <body>
-	<div class="box">
-		<div class="number">正在跳转中......</div>
-		<div class="text">请稍后......</div>
-	</div>
-  <!--
-	<Script language="javascript">
-		function GetRequest() {
-		var url = location.search; //获取url中"?"符后的字串
-		var theRequest = new Object();
-		if (url.indexOf("?") != -1) {
-		var str = url.substr(1);
-		strs = str.split("&");
-		for(var i = 0; i < strs.length; i ++) {
-		theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
-		}
-		}
-		return theRequest;
-		}
-	</Script>
-	<Script language="javascript">
-		var Request = new Object();
-		Request = GetRequest();
-		window.location.href = Request['url'];//获取该地址并 跳转
-	</Script>
-  -->
-  <Script language="javascript">
-		window.location.href = {% url %};//跳转
-	</Script>
+  <div class="box">
+    <div class="number">驭风飞行中......</div>
+    <div class="text">
+      前往{{name}}({{url}})......
+    </div>
+  </div>
+  <footer class="footer">
+    <a href="https://github.com/cxl2020MC/hexo-buttterfly-jump-jump" target="_blank">Gtihub</a>
+  </footer>
+  <script language="javascript">
+    window.location.href = {{url}};//跳转
+  </script>
 </body>
+</html>
