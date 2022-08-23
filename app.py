@@ -14,6 +14,9 @@ app.debug = True
 @app.route('/', methods=['GET'])
 def index():
     url = os.getenv('URL')
+    print(url)
+    if url:
+        return 'URL环境变量未设置'
     yamldata = requests.get(url).text
     data = yaml.load(yamldata)
     print(data)
