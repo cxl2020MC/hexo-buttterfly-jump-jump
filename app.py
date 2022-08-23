@@ -16,7 +16,8 @@ def index():
     url = os.getenv('URL')
     print(url)
     if url == None:
-        return 'URL环境变量未设置'
+        # return 'URL环境变量未设置'
+        url = 'https://github.com/cxl2020MC/cxl2020MC.github.io/raw/master/source/_data/link.yml'
     yamldata = requests.get(url).text
     data = yaml.load(yamldata)
     print(data)
@@ -26,7 +27,7 @@ def index():
         for i in i['link_list']:
             friends.append({'url': i['link'], 'name': i['name']})
     print(friends)
-    data = friends[random.randint(len(friends)-1)]
+    data = friends[random.randint(0, len(friends)-1)]
     return render_template('tp.html', url = data['url'], name = data['name'])
 
 if __name__ == '__main__':
