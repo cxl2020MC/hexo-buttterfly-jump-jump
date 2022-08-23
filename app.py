@@ -18,7 +18,7 @@ def index():
     if url == None:
         return 'URL环境变量未设置'
     yamldata = requests.get(url).text
-    print(yamldata)
+    # print(yamldata)
     data = yaml.load(yamldata)
     print(data)
 
