@@ -19,7 +19,7 @@ def index():
         return 'URL环境变量未设置'
     yamldata = requests.get(url).text
     # print(yamldata)
-    data = yaml.load(yamldata)
+    data = yaml.load(Loader = yamldata)
     print(data)
 
     friends = []
