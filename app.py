@@ -20,7 +20,7 @@ def index():
     yamldata = requests.get(url).text
     # print(yamldata)
     data = yaml.load(yamldata, Loader = yaml.FullLoader)
-    print(data)
+    # print(data)
 
     friends = []
     for i in data:
